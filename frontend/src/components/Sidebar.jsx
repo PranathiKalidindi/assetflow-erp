@@ -18,7 +18,7 @@ const menuItems = [
   { icon: BarChart3, label: "Reports" },
 ];
 
-function Sidebar() {
+function Sidebar({ setPage }) {
   return (
     <aside className="w-64 bg-slate-900 text-white min-h-screen p-6">
       <h1 className="text-2xl font-bold mb-10 text-blue-400">
@@ -28,9 +28,14 @@ function Sidebar() {
       <nav className="space-y-2">
         {menuItems.map(({ icon: Icon, label }) => (
           <button
-            key={label}
-            className="flex items-center gap-3 w-full px-4 py-3 rounded-lg hover:bg-slate-800 transition"
-          >
+  key={label}
+  onClick={() => {
+    if (label === "Dashboard") setPage("dashboard");
+    if (label === "Assets") setPage("assets");
+    if (label === "Employees") setPage("employees");
+  }}
+  className="flex items-center gap-3 w-full px-4 py-3 rounded-lg hover:bg-slate-800 transition"
+>
             <Icon size={20} />
             {label}
           </button>

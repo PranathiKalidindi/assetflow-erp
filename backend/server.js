@@ -3,6 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import assetRoutes from "./routes/assetRoutes.js";
+import employeeRoutes from "./routes/employeeRoutes.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
 
 dotenv.config();
 
@@ -11,6 +13,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/api/assets", assetRoutes);
+app.use("/api/employees", employeeRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)
