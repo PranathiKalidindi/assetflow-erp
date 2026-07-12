@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Login() {
   return (
     <div className="min-h-screen bg-slate-100 flex items-center justify-center">
@@ -22,11 +24,21 @@ function Login() {
           className="w-full mt-4 border rounded-lg p-3"
         />
 
-        <button
-          className="w-full bg-blue-600 text-white p-3 rounded-lg mt-6 hover:bg-blue-700"
-        >
-          Login
-        </button>
+        <Link to="/dashboard">
+          <button className="w-full bg-blue-600 text-white p-3 rounded-lg mt-6 hover:bg-blue-700 transition">
+            Login
+          </button>
+        </Link>
+
+        <p className="text-center text-gray-500 mt-4">
+          Don't have an account?{" "}
+          <Link
+            to="/signup"
+            className="text-blue-600 hover:underline font-medium"
+          >
+            Sign Up
+          </Link>
+        </p>
       </div>
     </div>
   );
