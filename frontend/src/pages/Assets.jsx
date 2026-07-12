@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { getAssets, addAsset } from "../services/assetService";
+import {
+  getAssets,
+  addAsset,
+  deleteAsset,
+} from "../services/assetService";
 
 function Assets() {
   const [assets, setAssets] = useState([]);
@@ -47,6 +51,22 @@ function Assets() {
       alert("Failed to add asset");
     }
   };
+
+const handleDelete = async (id) => {
+  const confirmDelete = window.confirm(
+    "Are you sure you want to delete this asset?"
+  );
+
+  if (!confirmDelete) return;
+
+  try {
+    await deleteAsset(id);
+    fetchAssets();
+  } catch (err) {
+    console.error(err);
+    alert("Failed to delete asset");
+  }
+};
 
   return (
     <div className="p-8">
@@ -103,6 +123,7 @@ function Assets() {
               <th className="text-left p-2">Type</th>
               <th className="text-left p-2">Serial No</th>
               <th className="text-left p-2">Status</th>
+              <th className="text-left p-2">Actions</th>
             </tr>
           </thead>
 
@@ -113,6 +134,14 @@ function Assets() {
                 <td className="p-2">{asset.assetType}</td>
                 <td className="p-2">{asset.serialNumber}</td>
                 <td className="p-2">{asset.status}</td>
+                <td className="p-2">
+  <button
+    onClick={() => handleDelete(asset._id)}
+    className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+  >
+    Delete
+  </button>
+</td>
               </tr>
             ))}
           </tbody>
