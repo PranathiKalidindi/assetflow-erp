@@ -6,5 +6,8 @@ export const getAssets = () => axios.get(API);
 
 export const addAsset = (asset) => axios.post(API, asset);
 
+export const updateAsset = (id, asset) =>
+  axios.put(`${API}/${id}`, asset);
+
 export const deleteAsset = (id) =>
   axios.delete(`${API}/${id}`);
