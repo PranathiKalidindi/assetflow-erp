@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Footer from "../components/Footer";
 import {
   getAssets,
   addAsset,
@@ -147,6 +148,7 @@ const handleDelete = async (id) => {
           </tbody>
         </table>
       </div>
+      <Footer />
     </div>
   );
 }

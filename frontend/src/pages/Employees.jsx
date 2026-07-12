@@ -4,6 +4,7 @@ import {
   addEmployee,
   deleteEmployee,
 } from "../services/employeeService";
+import Footer from "../components/Footer";
 
 function Employees() {
   const [employees, setEmployees] = useState([]);
@@ -156,6 +157,7 @@ function Employees() {
           </tbody>
         </table>
       </div>
+      <Footer />
     </div>
   );
 }

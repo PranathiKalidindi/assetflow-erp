@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import DashboardCard from "../components/DashboardCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Footer from "../components/Footer";
 
 function Dashboard({ setPage }) {
   const [stats, setStats] = useState({
@@ -24,10 +25,10 @@ function Dashboard({ setPage }) {
       <Sidebar setPage={setPage} />
 
       {/* Main Content */}
-      <div className="flex-1">
+      <div className="flex-1 flex flex-col">
         <Navbar />
 
-        <div className="p-8">
+        <div className="p-8 flex-1">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
             <DashboardCard
   title="Total Assets"
@@ -67,6 +68,7 @@ function Dashboard({ setPage }) {
             </ul>
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   );
